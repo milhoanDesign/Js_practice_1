@@ -1,6 +1,7 @@
 
 // Wait for the DOM content to load fully before accessing elements
 document.addEventListener("DOMContentLoaded", function () {
+    
     // Get the input and button elements
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
@@ -13,20 +14,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const value1 = firstName.value.trim(); // Get and trim the value of input1
         const value2 = lastName.value.trim(); // Get and trim the value of input2
 
-       if (value1 && value2) {
-        const result = `${lastName} + ${firstName}`; 
+       // Check if both fields have values
+        if (value1 && value2) {
+            // Combine both values into a guest list <li>
+            const result = `Guest Name: ${value1}, ${value2}`; 
+            
+            // Create a new <li> element and add it to outputList
+            const listItem = document.createElement("li");
+            listItem.textContent = result; 
+            outputList.appendChild(listItem); 
+       } else {
+            // Handle cases where on or both fields are empty
+            alert(`Please fill out both name fields`); 
        }
-        // Create a new <li> element and add it to outputList
-        const listItem = document.createElement("li");
-        listItem.textContent = result; 
-        outputList.appendChild(listItem); 
     }
 
     // Function to handle the clearing of inputs and output
     function handleClear() {
         firstName.value = "";
         lastName.value = "";
-        outputList.textContent = "Results will be displayed here.";
+        outputList.innerHTML = "No guests have regisered.";
     }
 
     // Attach event listeners to the buttons
