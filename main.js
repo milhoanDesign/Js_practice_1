@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
        // Check if both fields have values
         if (value1 && value2) {
             // Combine both values into a guest list <li>
-            const result = `Guest Name: ${value1}, ${value2}`; 
+            const result = `${value1} ${value2}`; 
             
             // Create a new <li> element and add it to outputList
             const listItem = document.createElement("li");
