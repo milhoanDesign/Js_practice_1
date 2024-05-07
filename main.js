@@ -1,32 +1,35 @@
 
-document.addEventListener('DOMContentLoaded', function() {
+// Wait for the DOM content to load fully before accessing elements
+document.addEventListener("DOMContentLoaded", function () {
     // Get the input and button elements
-    const firstName = document.getElementById('input1');
-    const lastName = document.getElementById('input2');
-    const submit = document.getElementById('submitButton');
-    const clear = document.getElementById('clearButton');
-    const outputText = document.getElementById(outputText); 
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const submitButton = document.getElementById("submitButton");
+    const clearButton = document.getElementById("clearButton");
+    const outputList = document.getElementById("outputList");
 
-    // Function to handle the submissions
-    function submit () {
-        const value1 = firstName.value.trim(); // Get and trim the value of input 1
-        const value2 = lastName.value.trim(); // Get and trim value 2
-        
-        // Combine each value into a result
-        const result = `${lastName} + "," + ${firstName}`; 
+    // Function to handle the submission
+    function handleSubmit() {
+        const value1 = firstName.value.trim(); // Get and trim the value of input1
+        const value2 = lastName.value.trim(); // Get and trim the value of input2
 
-        // Update output <p> with the result
-        outputText.textContent = result; 
+       if (value1 && value2) {
+        const result = `${lastName} + ${firstName}`; 
+       }
+        // Create a new <li> element and add it to outputList
+        const listItem = document.createElement("li");
+        listItem.textContent = result; 
+        outputList.appendChild(listItem); 
     }
 
-    // Function to handle clear button
-    function clear () {
+    // Function to handle the clearing of inputs and output
+    function handleClear() {
         firstName.value = "";
-        lastName.value = ""; 
-        outputText.value = "Names will be listed here:";
+        lastName.value = "";
+        outputList.textContent = "Results will be displayed here.";
     }
 
-    // Add event listeners to the buttons
-    submitButton.addEventListener('click', submit); 
-    clearButton.addEventListener('click', clear); 
-})
+    // Attach event listeners to the buttons
+    submitButton.addEventListener("click", handleSubmit);
+    clearButton.addEventListener("click", handleClear);
+});
