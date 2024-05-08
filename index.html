@@ -7,15 +7,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>Input and Output Form</h1>
-        <form id="inputForm">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName">
-            <button type="button" id="submitButton">Submit</button>
-            <button type="button" id="clearButton">Clear</button>
-        </form>
+        <h1>Football Awards Benefit 🏈</h1>
+            <form id="inputForm">
+                <div class="inline">
+                    <div class="flex-column">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName">
+                    </div>
+                    <div class="flex-column">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName">
+                    </div>
+                </div>
+                    <div class="inline">
+                        <label for="selectGuests">How many quests will you have?</label>
+                        <select name="selectGuests" id="selectGuests">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                <button type="button" id="submitButton">Submit</button>
+                <button type="button" id="clearButton">Clear</button>
+            </form>
         <div id="outputArea" class="output-area">
             <h2>Guest List:</h2>
             <ul id="outputList"></ul>
