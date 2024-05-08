@@ -1,42 +1,58 @@
 
-// Wait for the DOM content to load fully before accessing elements
-document.addEventListener("DOMContentLoaded", function () {
-    
-    // Get the input and button elements
-    const firstName = document.getElementById("firstName");
-    const lastName = document.getElementById("lastName");
-    const submitButton = document.getElementById("submitButton");
-    const clearButton = document.getElementById("clearButton");
-    const outputList = document.getElementById("outputList");
+// Pseudo code for handling form input and output
 
-    // Function to handle the submission
-    function handleSubmit() {
-        const value1 = firstName.value.trim(); // Get and trim the value of input1
-        const value2 = lastName.value.trim(); // Get and trim the value of input2
+// 1. Retrieve DOM elements
+document.addEventListener('DOMContentLoaded', function() {
 
-       // Check if both fields have values
-        if (value1 && value2) {
-            // Combine both values into a guest list <li>
-            const result = `${value1} ${value2}`; 
+
+    // - Get references to the form inputs, the output list, and the buttons by their IDs
+     const firstName = document.getElementById('firstName');
+     const lastName = document.getElementById('lastName');
+     const submitButton = document.getElementById('submitButton');
+     const clearButton = document.getElementById('clearButton'); 
+     const outputList = document.getElementById('outputList'); 
+
+    // 2. Function: Handle form submission
+
+    function handleSubmit () {
+        // - Get the values entered into the "First Name" and "Last Name" fields
+        const firstNameValue = firstName.value.trim(); 
+        const lastNameValue = lastName.value.trim(); 
+        
+        // - If both fields are filled, create a new list item combining the names
+        if (firstNameValue && lastNameValue) {
+            const listItem = document.createElement("li"); 
+            listItem.textContent = `${firstNameValue} ${lastNameValue}`; 
             
-            // Create a new <li> element and add it to outputList
-            const listItem = document.createElement("li");
-            listItem.textContent = result; 
+            // - Append the new list item to the "outputList" (Guest List) section
             outputList.appendChild(listItem); 
-       } else {
-            // Handle cases where on or both fields are empty
-            alert(`Please fill out both name fields`); 
-       }
-    }
 
-    // Function to handle the clearing of inputs and output
-    function handleClear() {
+            // - Clear the input fields after submission
+            firstName.value = "";
+            lastName.value = "";
+
+            //Set the focus back to the firstName
+            firstName.focus(); 
+       
+        } else {
+            alert("Please enter all fields"); 
+        }
+    }
+    
+    
+    // 3. Function: Clear form input fields
+    function handleClear () {
+        // - Set the "First Name" and "Last Name" input fields to empty strings
         firstName.value = "";
-        lastName.value = "";
-        outputList.innerHTML = "No guests have regisered.";
+        lastName.value = ""; 
+        outputList.innerHTML = ""; 
+        firstName.focus(); 
+         
     }
+    // 4. Event listeners for buttons
+        // - Listen for clicks on the "Submit" button to call the form submission function
+        submitButton.addEventListener('click', handleSubmit);
 
-    // Attach event listeners to the buttons
-    submitButton.addEventListener("click", handleSubmit);
-    clearButton.addEventListener("click", handleClear);
-});
+        // - Listen for clicks on the "Clear" button to call the clear form function
+        clearButton.addEventListener('click', handleClear); 
+    })
