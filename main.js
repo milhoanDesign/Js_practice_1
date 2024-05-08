@@ -1,5 +1,4 @@
 
-// Pseudo code for handling form input and output
 
 // 1. Retrieve DOM elements
 document.addEventListener('DOMContentLoaded', function() {
