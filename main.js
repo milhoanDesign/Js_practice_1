@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
      
      function updateTotals () {
         // Update text in the Guest Total heading
-        const guestHeading = document.querySelector("h3:contains('Guest Total: ')");
+        const guestHeading = document.getElementById('totalGuests');
         guestHeading.textContent = `Guests Total: ${totalGuests}`;
 
         // - Update text in the Friends Total heading
-        const friendsHeading = document.querySelector("h3:contains('Friends Total: ')");
+        const friendsHeading = document.getElementById('totalFriends');
         friendsHeading.textContent = `Friends Total: ${totalFriends}`; 
      }
 
@@ -43,6 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // - Append the new list item to the "outputList" (Guest List) section
             outputList.appendChild(listItem); 
 
+            // - Update totals
+            totalGuests += 1; 
+            totalFriends += guestCount; // each count adds one friend
+
+            // - Update Totals
+            updateTotals(); 
 
             // - Clear the input fields after submission
             firstName.value = "";
@@ -67,8 +73,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // - Set the select field back to 0
         guestCountSelect.value = '0';
 
+
         // - Clear the list items
         outputList.innerHTML = ""; 
+        totalGuests = 0; 
+        totalFriends = 0; 
+
+        // Update totals call
+        updateTotals(); 
+
+        // - Add focus to first name input
         firstName.focus(); 
          
     }
