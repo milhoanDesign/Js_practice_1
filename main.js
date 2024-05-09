@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
      const submitButton = document.getElementById('submitButton');
      const clearButton = document.getElementById('clearButton'); 
      const outputList = document.getElementById('outputList'); 
+     const guestTotal = document.getElementById('guestTotal');
+     const friendTotal = document.getElementById('freindsTotal');
 
     // 2. Function: Handle form submission
 
@@ -27,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // - Append the new list item to the "outputList" (Guest List) section
             outputList.appendChild(listItem); 
+
+            // - Get firstName and add it to guestTotal
+            const guestTotalCount = friendTotal.value.trim();
+            
 
             // - Clear the input fields after submission
             firstName.value = "";
