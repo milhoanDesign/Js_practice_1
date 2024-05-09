@@ -11,8 +11,21 @@ document.addEventListener('DOMContentLoaded', function() {
      const submitButton = document.getElementById('submitButton');
      const clearButton = document.getElementById('clearButton'); 
      const outputList = document.getElementById('outputList'); 
-     const guestTotal = document.getElementById('guestTotal');
-     const friendTotal = document.getElementById('freindsTotal');
+
+
+     // - Initilize Counters
+     let totalGuests = 0; 
+     let totalFriends = 0;
+     
+     function updateTotals () {
+        // Update text in the Guest Total heading
+        const guestHeading = document.querySelector("h3:contains('Guest Total: ')");
+        guestHeading.textContent = `Guests Total: ${totalGuests}`;
+
+        // - Update text in the Friends Total heading
+        const friendsHeading = document.querySelector("h3:contains('Friends Total: ')");
+        friendsHeading.textContent = `Friends Total: ${totalFriends}`; 
+     }
 
     // 2. Function: Handle form submission
 
@@ -20,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // - Get the values entered into the "First Name" and "Last Name" fields
         const firstNameValue = firstName.value.trim(); 
         const lastNameValue = lastName.value.trim(); 
-        const guestCount = guestCountSelect.value; 
+        const guestCount = parseInt(guestCountSelect.value, 10); 
         
         // - If both fields are filled, create a new list item combining the names
         if (firstNameValue && lastNameValue) {
@@ -30,9 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // - Append the new list item to the "outputList" (Guest List) section
             outputList.appendChild(listItem); 
 
-            // - Get firstName and add it to guestTotal
-            const guestTotalCount = friendTotal.value.trim();
-            
 
             // - Clear the input fields after submission
             firstName.value = "";
