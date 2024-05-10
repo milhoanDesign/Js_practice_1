@@ -32,9 +32,11 @@ h1, h2 {
     text-align: left;
 }
 
-li {
-    margin-bottom: .75rem;
+ul#outputList {
+    padding-left: 20px;
 }
+
+
 
 form {
     display: flex;
